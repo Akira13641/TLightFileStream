@@ -16,16 +16,18 @@ var
 begin
   SetLength(DAB, 28);
   //If using the library in a {$mode ObjFPC} project, you can still use {$modeswitch AutoDeref}
-  //to avoid having to manually dereference the function calls.
+  //to avoid having to manually dereference after each chained function call.
   TLightFileStream.Create('Example.txt')
                   .WriteTypedBuffer<Double>(DAA[0], 6)
+                  .WriteTypedBuffer<Double>(DAA[0], 6)
+                  .Seek(0)
                   .AppendTypedBuffer<Double>(DAA[0], 6)
-                  .AppendTypedBuffer<Double>(DAA[0], 6)
-                  .AppendTypedBuffer<Double>(DAA[0], 6)
-                  .AppendDouble(99.99)
+                  .WritePointerBuffer(@DAA[0], SizeOf(Double) * 6)
+                  .WriteDouble(99.99)
+                  .Seek(0)
                   .AppendDouble(128.12)
-                  .AppendDouble(77.77)
-                  .AppendDouble(345.34)
+                  .WriteType<Double>(77.77)
+                  .WriteDouble(345.34)
                   .ChangeFileStateTo(fsReading)
                   .ReadPointerBuffer(@DAB[0], SizeOf(Double) * 28)
                   .Close();
