@@ -150,6 +150,10 @@ type
     function AppendAnsiString(const Item: AnsiString): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     //Sets the current position of the underlying file to ToPosition, relative to 0.
     function Seek(const ToPosition: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
+    //Returns the size in bytes of the underlying file.
+    function Size: SizeInt; inline;
+    //Returns the current position of the underlying file pointer.
+    function Position: SizeInt; inline;
     //Closes the underlying file. Does not return a self-pointer, as it should always be the last method called.
     procedure Close; {$IFNDEF DEBUG}inline;{$ENDIF}
   end;
@@ -677,6 +681,19 @@ begin
   {$ENDIF}
   FileSeek(FHandle, ToPosition, fsFromBeginning);
   Result := @Self;
+end;
+
+function TLightFileStream.Size: SizeInt;
+var P: SizeInt;
+begin
+  P := FileSeek(FHandle, 0, fsFromCurrent);
+  Result := FileSeek(FHandle, 0, fsFromEnd);
+  FileSeek(FHandle, P, fsFromBeginning);
+end;
+
+function TLightFileStream.Position: SizeInt;
+begin
+  Result := FileSeek(FHandle, 0, fsFromCurrent);
 end;
 
 procedure TLightFileStream.Close;
