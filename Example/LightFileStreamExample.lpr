@@ -33,11 +33,9 @@ begin
   TLightFileStream.Create('Example2.txt')
                   .WriteAnsiString(SA)
                   .ChangeFileStateTo(fsReading)
-                  .Seek(0)
                   .ReadAnsiString(SB, 5)
                   .Close();
   WriteLn(SB);
   DeleteFile('Example.txt');
   DeleteFile('Example2.txt');
 end.
-
