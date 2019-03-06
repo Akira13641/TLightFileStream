@@ -31,7 +31,7 @@ type
     FFileName: PChar;
     //The handle of the underlying file on disk.
     FHandle: THandle;
-    //Indicates whether the file is open and can be accessed at all.
+    //Indicates whether the file is @noAutoLink(open) and can be accessed at all.
     //All functions return immediately without doing anything in the event that this is false,
     //unless @code({$define NoChecks}) is set, which improves performance but is somewhat less "safe."
     FOpen: Boolean;
@@ -46,113 +46,113 @@ type
     //Calls @code(FileClose()) on FHandle, then calls @code(FileOpen()) with either @code(fmOpenRead) or @code(fmOpenWrite)
     //internally based on the provided State value. FState is then set to State.
     function ChangeFileStateTo(const State: TFileState): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of T into Item from the underlying file at the current position.
+    //Reads a single instance of T into Item from the underlying file at the current @noAutoLink(position).
     function ReadType<T>(var Item: T): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of T from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of T from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteType<T>(constref Item: T): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of T from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of T from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendType<T>(constref Item: T): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Assumes Buffer is something like the first value of an array of T. Reads ItemCount items into it from the underlying file at the current position.
+    //Assumes Buffer is something like the first value of an array of T. Reads ItemCount items into it from the underlying file at the current @noAutoLink(position).
     function ReadTypedBuffer<T>(var Buffer: T; const ItemCount: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Assumes Buffer is something like the first value of an array of T. Writes ItemCount items from it to the underlying file at the current position, possibly overwriting existing data.
+    //Assumes Buffer is something like the first value of an array of T. Writes ItemCount items from it to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteTypedBuffer<T>(constref Buffer: T; const ItemCount: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Assumes Buffer is something like the first value of an array of T. Writes ItemCount items from it to the underlying file at the last position, behind any existing data.
+    //Assumes Buffer is something like the first value of an array of T. Writes ItemCount items from it to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendTypedBuffer<T>(constref Buffer: T; const ItemCount: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Assumes Buffer is pointing to something like the first value of an array of any type. Reads NumBytesToRead bytes into it from the underlying file at the current position.
+    //Assumes Buffer is pointing to something like the first value of an array of any type. Reads NumBytesToRead bytes into it from the underlying file at the current @noAutoLink(position).
     function ReadPointerBuffer(const Buffer: Pointer; const NumBytesToRead: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Assumes Buffer is pointing to something like the first value of an array of any type. Writes NumBytesToRead bytes from it to the underlying file at the current position, possibly overwriting existing data.
+    //Assumes Buffer is pointing to something like the first value of an array of any type. Writes NumBytesToRead bytes from it to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WritePointerBuffer(const Buffer: Pointer; const NumBytesToRead: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Assumes Buffer is pointing to something like the first value of an array of any type. Writes NumBytesToRead bytes from it to the underlying file at the last position, behind any existing data.
+    //Assumes Buffer is pointing to something like the first value of an array of any type. Writes NumBytesToRead bytes from it to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendPointerBuffer(const Buffer: Pointer; const NumBytesToRead: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of Byte into Item from the underlying file at the current position.
+    //Reads a single instance of Byte into Item from the underlying file at the current @noAutoLink(position).
     function ReadByte(var Item: Byte): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of Byte from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of Byte from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteByte(const Item: Byte): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of Byte from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of Byte from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendByte(const Item: Byte): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of Word into Item from the underlying file at the current position.
+    //Reads a single instance of Word into Item from the underlying file at the current @noAutoLink(position).
     function ReadWord(var Item: Word): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of Word from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of Word from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteWord(const Item: Word): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of Word from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of Word from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendWord(const Item: Word): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of LongWord into Item from the underlying file at the current position.
+    //Reads a single instance of LongWord into Item from the underlying file at the current @noAutoLink(position).
     function ReadLongWord(var Item: LongWord): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of LongWord from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of LongWord from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteLongWord(const Item: LongWord): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of LongWord from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of LongWord from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendLongWord(const Item: LongWord): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of QWord into Item from the underlying file at the current position.
+    //Reads a single instance of QWord into Item from the underlying file at the current @noAutoLink(position).
     function ReadQWord(var Item: QWord): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of QWord from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of QWord from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteQWord(const Item: QWord): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of QWord from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of QWord from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendQWord(const Item: QWord): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of ShortInt into Item from the underlying file at the current position.
+    //Reads a single instance of ShortInt into Item from the underlying file at the current @noAutoLink(position).
     function ReadShortInt(var Item: ShortInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of ShortInt from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of ShortInt from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteShortInt(const Item: ShortInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of ShortInt from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of ShortInt from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendShortInt(const Item: ShortInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of SmallInt into Item from the underlying file at the current position.
+    //Reads a single instance of SmallInt into Item from the underlying file at the current @noAutoLink(position).
     function ReadSmallInt(var Item: SmallInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of SmallInt from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of SmallInt from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteSmallInt(const Item: SmallInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of SmallInt from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of SmallInt from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendSmallInt(const Item: SmallInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of LongInt into Item from the underlying file at the current position.
+    //Reads a single instance of LongInt into Item from the underlying file at the current @noAutoLink(position).
     function ReadLongInt(var Item: LongInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of LongInt from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of LongInt from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteLongInt(const Item: LongInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of LongInt from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of LongInt from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendLongInt(const Item: LongInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of Int64 into Item from the underlying file at the current position.
+    //Reads a single instance of Int64 into Item from the underlying file at the current @noAutoLink(position).
     function ReadInt64(var Item: Int64): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of Int64 from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of Int64 from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteInt64(const Item: Int64): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of Int64 from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of Int64 from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendInt64(const Item: Int64): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of Single into Item from the underlying file at the current position.
+    //Reads a single instance of Single into Item from the underlying file at the current @noAutoLink(position).
     function ReadSingle(var Item: Single): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of Single from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of Single from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteSingle(const Item: Single): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of Single from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of Single from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendSingle(const Item: Single): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of Double into Item from the underlying file at the current position.
+    //Reads a single instance of Double into Item from the underlying file at the current @noAutoLink(position).
     function ReadDouble(var Item: Double): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of Double from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of Double from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteDouble(const Item: Double): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of Double from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of Double from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendDouble(const Item: Double): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of AnsiChar into Item from the underlying file at the current position.
+    //Reads a single instance of AnsiChar into Item from the underlying file at the current @noAutoLink(position).
     function ReadAnsiChar(var Item: AnsiChar): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of AnsiChar from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of AnsiChar from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteAnsiChar(const Item: AnsiChar): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of AnsiChar from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of AnsiChar from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendAnsiChar(const Item: AnsiChar): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads a single instance of WideChar into Item from the underlying file at the current position.
+    //Reads a single instance of WideChar into Item from the underlying file at the current @noAutoLink(position).
     function ReadWideChar(var Item: WideChar): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of WideChar from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of WideChar from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteWideChar(const Item: WideChar): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of WideChar from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of WideChar from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendWideChar(const Item: WideChar): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads NumChars worth of AnsiChars into Item from the underlying file at the current position.
+    //Reads NumChars worth of AnsiChars into Item from the underlying file at the current @noAutoLink(position).
     function ReadShortString(var Item: ShortString; const NumChars: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of ShortString from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of ShortString from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteShortString(const Item: ShortString): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of ShortString from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of ShortString from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendShortString(const Item: ShortString): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Reads NumChars worth of AnsiChars into Item from the underlying file at the current position.
+    //Reads NumChars worth of AnsiChars into Item from the underlying file at the current @noAutoLink(position).
     function ReadAnsiString(var Item: AnsiString; const NumChars: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of AnsiString from Item to the underlying file at the current position, possibly overwriting existing data.
+    //Writes a single instance of AnsiString from Item to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
     function WriteAnsiString(const Item: AnsiString): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Writes a single instance of AnsiString from Item to the underlying file at the last position, behind any existing data.
+    //Writes a single instance of AnsiString from Item to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendAnsiString(const Item: AnsiString): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Sets the current position of the underlying file to ToPosition, relative to 0.
+    //Sets the current @noAutoLink(position) of the underlying file to ToPosition, relative to 0.
     function Seek(const ToPosition: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Returns the size in bytes of the underlying file.
+    //Returns the @noAutoLink(size) in bytes of the underlying file.
     function Size: SizeInt; inline;
-    //Returns the current position of the underlying file pointer.
+    //Returns the current @noAutoLink(position) of the underlying file.
     function Position: SizeInt; inline;
     //Closes the underlying file. Does not return a self-pointer, as it should always be the last method called.
     procedure Close; {$IFNDEF DEBUG}inline;{$ENDIF}

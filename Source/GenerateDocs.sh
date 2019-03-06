@@ -1,0 +1,1 @@
+rm -rf ./temp && mkdir ./temp && pasdoc -E./temp --auto-link --visible-members strictprivate,public --sort=functions,record-fields,non-record-fields,methods,properties --format=htmlhelp -N LightFileStream ./LightFileStream.pas && cd ./temp && chmcmd --html-scan --verbosity 0 ./LightFileStream.hhp && cp ./LightFileStream.chm ../../Docs/LightFileStream.chm && cd .. && rm -rf ./temp
