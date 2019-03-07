@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>LightFileStream: Record TLightFileStream</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="PasDoc 0.15.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<link rel="StyleSheet" type="text/css" href="pasdoc.css">
+</head>
+<body>
+<table class="container"><tr><td class="navigation">
+<p><a href="AllUnits.html" class="navigation">Units</a></p><p><a href="ClassHierarchy.html" class="navigation">Class Hierarchy</a></p><p><a href="AllClasses.html" class="navigation">Classes, Interfaces, Objects and Records</a></p><p><a href="AllTypes.html" class="navigation">Types</a></p><p><a href="AllVariables.html" class="navigation">Variables</a></p><p><a href="AllConstants.html" class="navigation">Constants</a></p><p><a href="AllFunctions.html" class="navigation">Functions and Procedures</a></p><p><a href="AllIdentifiers.html" class="navigation">Identifiers</a></p></td><td class="content">
+<span id="TLightFileStream"></span><h1 class="cio">Record TLightFileStream</h1>
+<div class="sections">
+<div class="one_section"><a class="section" href="#PasDoc-Description">Description</a></div><div class="one_section">Hierarchy</div><div class="one_section"><a class="section" href="#PasDoc-NestedTypes">Nested Types</a></div><div class="one_section"><a class="section" href="#PasDoc-Fields">Fields</a></div><div class="one_section"><a class="section" href="#PasDoc-Methods">Methods</a></div><div class="one_section">Properties</div></div>
+<span id="PasDoc-Description"></span><h2 class="unit">Unit</h2>
+<p class="unitlink">
+<a  href="LightFileStream.html">LightFileStream</a></p>
+<h2 class="declaration">Declaration</h2>
+<p class="declaration">
+<code>type TLightFileStream = record</code></p>
+<h2 class="description">Description</h2>
+<p>
+ The sole type implemented by this unit so far.
+
+<p>Returns a pointer to itself from all functions to avoid unnecessary allocation or copying and to allow for a convenient &quot;method chaining&quot; API.</p>
+<h2 class="overview">Overview</h2>
+<span id="PasDoc-NestedTypes"></span><h3 class="summary">Nested Types</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><code><b><a  href="LightFileStream.TLightFileStream.html#TFileState">TFileState</a></b> = (...);</code></td>
+</tr>
+</table>
+<span id="PasDoc-Fields"></span><h3 class="summary">Fields</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="private.gif" alt="Strict Private" title="Strict Private"></a></td>
+<td class="itemcode"><code><b><a  href="LightFileStream.TLightFileStream.html#FFileName">FFileName</a></b>: PChar;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="private.gif" alt="Strict Private" title="Strict Private"></a></td>
+<td class="itemcode"><code><b><a  href="LightFileStream.TLightFileStream.html#FHandle">FHandle</a></b>: THandle;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="private.gif" alt="Strict Private" title="Strict Private"></a></td>
+<td class="itemcode"><code><b><a  href="LightFileStream.TLightFileStream.html#FOpen">FOpen</a></b>: Boolean;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="private.gif" alt="Strict Private" title="Strict Private"></a></td>
+<td class="itemcode"><code><b><a  href="LightFileStream.TLightFileStream.html#FState">FState</a></b>: <a  href="LightFileStream.TLightFileStream.html#TFileState">TFileState</a>;</code></td>
+</tr>
+</table>
+<span id="PasDoc-Methods"></span><h3 class="summary">Methods</h3>
+<table class="summary wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendAnsiChar">AppendAnsiChar</a></b>(const Item: AnsiChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendAnsiString">AppendAnsiString</a></b>(const Item: AnsiString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendByte">AppendByte</a></b>(const Item: Byte): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendCurrency">AppendCurrency</a></b>(const Item: Currency): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendDateTime">AppendDateTime</a></b>(const Item: TDateTime): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendDouble">AppendDouble</a></b>(const Item: Double): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendInt64">AppendInt64</a></b>(const Item: Int64): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendLongInt">AppendLongInt</a></b>(const Item: LongInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendLongWord">AppendLongWord</a></b>(const Item: LongWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendPointerBuffer">AppendPointerBuffer</a></b>(const Buffer: Pointer; const NumBytesToWrite: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendQWord">AppendQWord</a></b>(const Item: QWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendShortInt">AppendShortInt</a></b>(const Item: ShortInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendShortString">AppendShortString</a></b>(const Item: ShortString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendSingle">AppendSingle</a></b>(const Item: Single): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendSmallInt">AppendSmallInt</a></b>(const Item: SmallInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendType">AppendType</a></b>&lt;T&gt;(constref Item: T): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendTypedBuffer">AppendTypedBuffer</a></b>&lt;T&gt;(constref Buffer: T; const ItemCount: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendUnicodeChar">AppendUnicodeChar</a></b>(const Item: UnicodeChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendUnicodeString">AppendUnicodeString</a></b>(const Item: UnicodeString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendWideChar">AppendWideChar</a></b>(const Item: WideChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendWideString">AppendWideString</a></b>(const Item: WideString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#AppendWord">AppendWord</a></b>(const Item: Word): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ChangeFileStateTo">ChangeFileStateTo</a></b>(const State: <a  href="LightFileStream.TLightFileStream.html#TFileState">TFileState</a>): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a  href="LightFileStream.TLightFileStream.html#Create">Create</a></b>(const FileName: PChar): <a  href="LightFileStream.TLightFileStream.html">TLightFileStream</a>; static; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#GetPosition">GetPosition</a></b>(out ThePosition: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#GetSize">GetSize</a></b>(out TheSize: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#LogPosition">LogPosition</a></b>: <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#LogSize">LogSize</a></b>: <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>class function <b><a  href="LightFileStream.TLightFileStream.html#Open">Open</a></b>(const FileName: PChar; const InitialState: <a  href="LightFileStream.TLightFileStream.html#TFileState">TFileState</a>): <a  href="LightFileStream.TLightFileStream.html">TLightFileStream</a>; static; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadAnsiChar">ReadAnsiChar</a></b>(var Item: AnsiChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadAnsiString">ReadAnsiString</a></b>(var Item: AnsiString; const NumChars: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadByte">ReadByte</a></b>(var Item: Byte): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadCurrency">ReadCurrency</a></b>(var Item: Currency): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadDateTime">ReadDateTime</a></b>(var Item: TDateTime): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadDouble">ReadDouble</a></b>(var Item: Double): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadInt64">ReadInt64</a></b>(var Item: Int64): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadLongInt">ReadLongInt</a></b>(var Item: LongInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadLongWord">ReadLongWord</a></b>(var Item: LongWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadPointerBuffer">ReadPointerBuffer</a></b>(const Buffer: Pointer; const NumBytesToRead: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadQWord">ReadQWord</a></b>(var Item: QWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadShortInt">ReadShortInt</a></b>(var Item: ShortInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadShortString">ReadShortString</a></b>(var Item: ShortString; const NumChars: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadSingle">ReadSingle</a></b>(var Item: Single): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadSmallInt">ReadSmallInt</a></b>(var Item: SmallInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadType">ReadType</a></b>&lt;T&gt;(var Item: T): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadTypedBuffer">ReadTypedBuffer</a></b>&lt;T&gt;(var Buffer: T; const ItemCount: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadUnicodeChar">ReadUnicodeChar</a></b>(var Item: UnicodeChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadUnicodeString">ReadUnicodeString</a></b>(var Item: UnicodeString; const NumChars: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadWideChar">ReadWideChar</a></b>(var Item: WideChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadWideString">ReadWideString</a></b>(var Item: WideString; const NumChars: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadWord">ReadWord</a></b>(var Item: Word): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#SeekFromBeginning">SeekFromBeginning</a></b>(const ToPosition: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#SeekFromCurrent">SeekFromCurrent</a></b>(const ToPosition: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#SeekFromEnd">SeekFromEnd</a></b>(const ToPosition: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#Truncate">Truncate</a></b>: <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteAnsiChar">WriteAnsiChar</a></b>(const Item: AnsiChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteAnsiString">WriteAnsiString</a></b>(const Item: AnsiString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteByte">WriteByte</a></b>(const Item: Byte): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteCurrency">WriteCurrency</a></b>(const Item: Currency): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteDateTime">WriteDateTime</a></b>(const Item: TDateTime): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteDouble">WriteDouble</a></b>(const Item: Double): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteInt64">WriteInt64</a></b>(const Item: Int64): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteLongInt">WriteLongInt</a></b>(const Item: LongInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteLongWord">WriteLongWord</a></b>(const Item: LongWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WritePointerBuffer">WritePointerBuffer</a></b>(const Buffer: Pointer; const NumBytesToWrite: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteQWord">WriteQWord</a></b>(const Item: QWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteShortInt">WriteShortInt</a></b>(const Item: ShortInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteShortString">WriteShortString</a></b>(const Item: ShortString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteSingle">WriteSingle</a></b>(const Item: Single): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteSmallInt">WriteSmallInt</a></b>(const Item: SmallInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteType">WriteType</a></b>&lt;T&gt;(constref Item: T): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteTypedBuffer">WriteTypedBuffer</a></b>&lt;T&gt;(constref Buffer: T; const ItemCount: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteUnicodeChar">WriteUnicodeChar</a></b>(const Item: UnicodeChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteUnicodeString">WriteUnicodeString</a></b>(const Item: UnicodeString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteWideChar">WriteWideChar</a></b>(const Item: WideChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteWideString">WriteWideString</a></b>(const Item: WideString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#WriteWord">WriteWord</a></b>(const Item: Word): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>procedure <b><a  href="LightFileStream.TLightFileStream.html#Close">Close</a></b>; inline;</code></td>
+</tr>
+</table>
+<h2 class="description">Description</h2>
+<h3 class="detail">Nested Types</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="published.gif" alt="Published" title="Published"></a></td>
+<td class="itemcode"><span id="TFileState"></span><code><b>TFileState</b> = (...);</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Determines whether read or write operations are actively accepted.
+
+<p>All functions return immediately without doing anything if the current state is &quot;wrong&quot; relative to them, unless <code>{$define NoChecks}</code> is set, which improves performance but is somewhat less &quot;safe.&quot;</p>
+<h6 class="description_section">Values</h6>
+<ul>
+<li>
+<span id="fsReading">fsReading</span></li>
+<li>
+<span id="fsWriting">fsWriting</span></li>
+</ul>
+</td></tr>
+</table>
+<h3 class="detail">Fields</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="private.gif" alt="Strict Private" title="Strict Private"></a></td>
+<td class="itemcode"><span id="FFileName"></span><code><b>FFileName</b>: PChar;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The name of the underlying file on disk.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="private.gif" alt="Strict Private" title="Strict Private"></a></td>
+<td class="itemcode"><span id="FHandle"></span><code><b>FHandle</b>: THandle;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+The handle of the underlying file on disk.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="private.gif" alt="Strict Private" title="Strict Private"></a></td>
+<td class="itemcode"><span id="FOpen"></span><code><b>FOpen</b>: Boolean;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Indicates whether the file is open and can be accessed at all.
+
+<p>All functions return immediately without doing anything in the event that this is false, unless <code>{$define NoChecks}</code> is set, which improves performance but is somewhat less &quot;safe.&quot;</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="private.gif" alt="Strict Private" title="Strict Private"></a></td>
+<td class="itemcode"><span id="FState"></span><code><b>FState</b>: <a  href="LightFileStream.TLightFileStream.html#TFileState">TFileState</a>;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+A private instance of <a class="normal" href="LightFileStream.TLightFileStream.html#TFileState">TFileState</a>, used as described above.</p>
+</td></tr>
+</table>
+<h3 class="detail">Methods</h3>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendAnsiChar"></span><code>function <b>AppendAnsiChar</b>(const Item: AnsiChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of AnsiChar from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendAnsiString"></span><code>function <b>AppendAnsiString</b>(const Item: AnsiString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of AnsiString from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendByte"></span><code>function <b>AppendByte</b>(const Item: Byte): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Byte from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendCurrency"></span><code>function <b>AppendCurrency</b>(const Item: Currency): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Currency from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendDateTime"></span><code>function <b>AppendDateTime</b>(const Item: TDateTime): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of TDateTime from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendDouble"></span><code>function <b>AppendDouble</b>(const Item: Double): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Double from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendInt64"></span><code>function <b>AppendInt64</b>(const Item: Int64): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Int64 from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendLongInt"></span><code>function <b>AppendLongInt</b>(const Item: LongInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of LongInt from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendLongWord"></span><code>function <b>AppendLongWord</b>(const Item: LongWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of LongWord from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendPointerBuffer"></span><code>function <b>AppendPointerBuffer</b>(const Buffer: Pointer; const NumBytesToWrite: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Assumes <code>Buffer</code> is pointing to something like the first value of an array of any type. Writes <code>NumBytesToWrite</code> bytes from it to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendQWord"></span><code>function <b>AppendQWord</b>(const Item: QWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of QWord from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendShortInt"></span><code>function <b>AppendShortInt</b>(const Item: ShortInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of ShortInt from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendShortString"></span><code>function <b>AppendShortString</b>(const Item: ShortString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of ShortString from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendSingle"></span><code>function <b>AppendSingle</b>(const Item: Single): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Single from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendSmallInt"></span><code>function <b>AppendSmallInt</b>(const Item: SmallInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of SmallInt from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendType"></span><code>function <b>AppendType</b>&lt;T&gt;(constref Item: T): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of T from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendTypedBuffer"></span><code>function <b>AppendTypedBuffer</b>&lt;T&gt;(constref Buffer: T; const ItemCount: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Assumes <code>Buffer</code> is something like the first value of an array of T. Writes <code>ItemCount</code> items from it to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendUnicodeChar"></span><code>function <b>AppendUnicodeChar</b>(const Item: UnicodeChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of UnicodeChar from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendUnicodeString"></span><code>function <b>AppendUnicodeString</b>(const Item: UnicodeString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of UnicodeString from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendWideChar"></span><code>function <b>AppendWideChar</b>(const Item: WideChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of WideChar from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendWideString"></span><code>function <b>AppendWideString</b>(const Item: WideString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of WideString from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="AppendWord"></span><code>function <b>AppendWord</b>(const Item: Word): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Word from <code>Item</code> to the underlying file at the last position, behind any existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ChangeFileStateTo"></span><code>function <b>ChangeFileStateTo</b>(const State: <a  href="LightFileStream.TLightFileStream.html#TFileState">TFileState</a>): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Calls <code>FileClose()</code> on <a class="normal" href="LightFileStream.TLightFileStream.html#FHandle">FHandle</a>, then calls <code>FileOpen()</code> with either <code>fmOpenRead</code> or <code>fmOpenWrite</code> internally based on the provides <code>State</code> value. <a class="normal" href="LightFileStream.TLightFileStream.html#FState">FState</a> is then set to <code>State</code>.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Create"></span><code>class function <b>Create</b>(const FileName: PChar): <a  href="LightFileStream.TLightFileStream.html">TLightFileStream</a>; static; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Assumes <code>FileName</code> does not yet exist on disk. Calls <code>FileCreate()</code> internally. <a class="normal" href="LightFileStream.TLightFileStream.html#FState">FState</a> is then set to <a class="normal" href="">fsWriting</a>, and <a class="normal" href="LightFileStream.TLightFileStream.html#FOpen">FOpen</a> is set to True.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="GetPosition"></span><code>function <b>GetPosition</b>(out ThePosition: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Returns the current position of the underlying file in <code>ThePosition</code>, and a self-pointer from the function itself.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="GetSize"></span><code>function <b>GetSize</b>(out TheSize: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Returns the size in bytes of the underlying file in <code>TheSize</code>, and a self-pointer from the function itself.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="LogPosition"></span><code>function <b>LogPosition</b>: <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Calls <a class="normal" href="LightFileStream.TLightFileStream.html#GetPosition">GetPosition</a>() internally and writes the value to the command line.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="LogSize"></span><code>function <b>LogSize</b>: <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Calls <a class="normal" href="LightFileStream.TLightFileStream.html#GetSize">GetSize</a>() internally and writes the value to the command line.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Open"></span><code>class function <b>Open</b>(const FileName: PChar; const InitialState: <a  href="LightFileStream.TLightFileStream.html#TFileState">TFileState</a>): <a  href="LightFileStream.TLightFileStream.html">TLightFileStream</a>; static; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Assumes <code>FileName</code> already exists on disk. Calls <code>FileOpen()</code> with either <code>fmOpenRead</code> or <code>fmOpenWrite</code> internally based on the provided <code>InitialState</code> value.
+
+<p><a class="normal" href="LightFileStream.TLightFileStream.html#FState">FState</a> is then set to <code>InitialState</code>, and <a class="normal" href="LightFileStream.TLightFileStream.html#FOpen">FOpen</a> is set to True.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadAnsiChar"></span><code>function <b>ReadAnsiChar</b>(var Item: AnsiChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of AnsiChar into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadAnsiString"></span><code>function <b>ReadAnsiString</b>(var Item: AnsiString; const NumChars: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads <code>NumChars</code> worth of AnsiChars into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadByte"></span><code>function <b>ReadByte</b>(var Item: Byte): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of Byte into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadCurrency"></span><code>function <b>ReadCurrency</b>(var Item: Currency): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of Currency into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadDateTime"></span><code>function <b>ReadDateTime</b>(var Item: TDateTime): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of TDateTime into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadDouble"></span><code>function <b>ReadDouble</b>(var Item: Double): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of Double into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadInt64"></span><code>function <b>ReadInt64</b>(var Item: Int64): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of Int64 into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadLongInt"></span><code>function <b>ReadLongInt</b>(var Item: LongInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of LongInt into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadLongWord"></span><code>function <b>ReadLongWord</b>(var Item: LongWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of LongWord into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadPointerBuffer"></span><code>function <b>ReadPointerBuffer</b>(const Buffer: Pointer; const NumBytesToRead: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Assumes <code>Buffer</code> is pointing to something like the first value of an array of any type. Reads <code>NumBytesToRead</code> bytes into it from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadQWord"></span><code>function <b>ReadQWord</b>(var Item: QWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of QWord into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadShortInt"></span><code>function <b>ReadShortInt</b>(var Item: ShortInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of ShortInt into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadShortString"></span><code>function <b>ReadShortString</b>(var Item: ShortString; const NumChars: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads <code>NumChars</code> worth of AnsiChars into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadSingle"></span><code>function <b>ReadSingle</b>(var Item: Single): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of Single into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadSmallInt"></span><code>function <b>ReadSmallInt</b>(var Item: SmallInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of SmallInt into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadType"></span><code>function <b>ReadType</b>&lt;T&gt;(var Item: T): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of T into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadTypedBuffer"></span><code>function <b>ReadTypedBuffer</b>&lt;T&gt;(var Buffer: T; const ItemCount: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Assumes <code>Buffer</code> is something like the first value of an array of T. Reads <code>ItemCount</code> items into it from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadUnicodeChar"></span><code>function <b>ReadUnicodeChar</b>(var Item: UnicodeChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of UnicodeChar into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadUnicodeString"></span><code>function <b>ReadUnicodeString</b>(var Item: UnicodeString; const NumChars: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads <code>NumChars</code> worth of UnicodeChars into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadWideChar"></span><code>function <b>ReadWideChar</b>(var Item: WideChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of WideChar into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadWideString"></span><code>function <b>ReadWideString</b>(var Item: WideString; const NumChars: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads <code>NumChars</code> worth of WideChars into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="ReadWord"></span><code>function <b>ReadWord</b>(var Item: Word): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Reads a single instance of Word into <code>Item</code> from the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="SeekFromBeginning"></span><code>function <b>SeekFromBeginning</b>(const ToPosition: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Sets the current position of the underlying file to <code>ToPosition</code>, relative to 0.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="SeekFromCurrent"></span><code>function <b>SeekFromCurrent</b>(const ToPosition: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Sets the current position of the underlying file to <code>ToPosition</code>, relative to itself.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="SeekFromEnd"></span><code>function <b>SeekFromEnd</b>(const ToPosition: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Sets the current position of the underlying file to <code>ToPosition</code>, relative to the end of the file.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Truncate"></span><code>function <b>Truncate</b>: <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Truncates the underlying file at the current position.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteAnsiChar"></span><code>function <b>WriteAnsiChar</b>(const Item: AnsiChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of AnsiChar from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteAnsiString"></span><code>function <b>WriteAnsiString</b>(const Item: AnsiString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of AnsiString from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteByte"></span><code>function <b>WriteByte</b>(const Item: Byte): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Byte from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteCurrency"></span><code>function <b>WriteCurrency</b>(const Item: Currency): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Currency from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteDateTime"></span><code>function <b>WriteDateTime</b>(const Item: TDateTime): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of TDateTime from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteDouble"></span><code>function <b>WriteDouble</b>(const Item: Double): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Double from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteInt64"></span><code>function <b>WriteInt64</b>(const Item: Int64): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Int64 from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteLongInt"></span><code>function <b>WriteLongInt</b>(const Item: LongInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of LongInt from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteLongWord"></span><code>function <b>WriteLongWord</b>(const Item: LongWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of LongWord from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WritePointerBuffer"></span><code>function <b>WritePointerBuffer</b>(const Buffer: Pointer; const NumBytesToWrite: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Assumes <code>Buffer</code> is pointing to something like the first value of an array of any type.
+
+<p>Writes <code>NumBytesToWrite</code> bytes from it to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteQWord"></span><code>function <b>WriteQWord</b>(const Item: QWord): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of QWord from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteShortInt"></span><code>function <b>WriteShortInt</b>(const Item: ShortInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of ShortInt from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteShortString"></span><code>function <b>WriteShortString</b>(const Item: ShortString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of ShortString from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteSingle"></span><code>function <b>WriteSingle</b>(const Item: Single): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Single from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteSmallInt"></span><code>function <b>WriteSmallInt</b>(const Item: SmallInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of SmallInt from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteType"></span><code>function <b>WriteType</b>&lt;T&gt;(constref Item: T): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of T from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteTypedBuffer"></span><code>function <b>WriteTypedBuffer</b>&lt;T&gt;(constref Buffer: T; const ItemCount: SizeInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Assumes <code>Buffer</code> is something like the first value of an array of T. Writes <code>ItemCount</code> items from it to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteUnicodeChar"></span><code>function <b>WriteUnicodeChar</b>(const Item: UnicodeChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of UnicodeChar from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteUnicodeString"></span><code>function <b>WriteUnicodeString</b>(const Item: UnicodeString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of UnicodeString from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteWideChar"></span><code>function <b>WriteWideChar</b>(const Item: WideChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of WideChar from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteWideString"></span><code>function <b>WriteWideString</b>(const Item: WideString): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of WideString from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="WriteWord"></span><code>function <b>WriteWord</b>(const Item: Word): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Writes a single instance of Word from <code>Item</code> to the underlying file at the current position, possibly overwriting existing data.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="Close"></span><code>procedure <b>Close</b>; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Closes the underlying file. Does not return a self-pointer, as it should always be the last method called.</p>
+</td></tr>
+</table>
+<hr><span class="appinfo"><em>Generated by <a  href="https://github.com/pasdoc/pasdoc/wiki">PasDoc 0.15.0</a>. </em>
+</span>
+</td></tr></table></body></html>
