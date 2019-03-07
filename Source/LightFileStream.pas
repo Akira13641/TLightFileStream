@@ -296,7 +296,7 @@ function TLightFileStream.LogSize: PLightFileStream;
 var CurrentSize: SizeInt = 0;
 begin
   GetSize(CurrentSize);
-  WriteLn(CurrentSize);
+  WriteLn('Size of TLightFileStream with handle ', FHandle, ': ', CurrentSize);
   Result := @Self;
 end;
 
@@ -313,7 +313,7 @@ function TLightFileStream.LogPosition: PLightFileStream;
 var CurrentPosition: SizeInt = 0;
 begin
   GetPosition(CurrentPosition);
-  WriteLn(CurrentPosition);
+  WriteLn('Position of TLightFileStream with handle ', FHandle, ': ', CurrentPosition);
   Result := @Self;
 end;
 
