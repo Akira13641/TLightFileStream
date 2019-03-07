@@ -10,7 +10,7 @@ const
 var
   D: Double;
   DAB: array of Double;
-  SA: Ansistring = 'hello';
+  SA: AnsiString = 'hello';
   SB: AnsiString = '     ';
   IA: SizeInt;
   C: Char;
