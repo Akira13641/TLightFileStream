@@ -1,6 +1,6 @@
 program LightFileStreamBenchmark;
 
-{$mode Delphi}{$H+}{$J-}{$I-}
+{$mode Delphi}{$H+}{$J-}{$I-}{$R-}
 
 uses SysUtils, Classes, EpikTimer, LightFileStream;
 
