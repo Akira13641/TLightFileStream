@@ -12,6 +12,7 @@ var
   D: Double;
   SA: Ansistring = 'hello';
   SB: AnsiString = '     ';
+  IA: SizeInt;
 
 begin
   SetLength(DAB, 28);
@@ -20,11 +21,11 @@ begin
   TLightFileStream.Create('Example.txt')
                   .WriteTypedBuffer<Double>(DAA[0], 6)
                   .WriteTypedBuffer<Double>(DAA[0], 6)
-                  .Seek(0)
+                  .SeekFromBeginning(0)
                   .AppendTypedBuffer<Double>(DAA[0], 6)
                   .WritePointerBuffer(@DAA[0], SizeOf(Double) * 6)
                   .WriteDouble(99.99)
-                  .Seek(0)
+                  .SeekFromBeginning(0)
                   .AppendDouble(128.12)
                   .WriteType<Double>(77.77)
                   .WriteDouble(345.34)
@@ -38,6 +39,21 @@ begin
                   .ReadAnsiString(SB, 5)
                   .Close();
   WriteLn(SB);
+  TLightFileStream.Create('Example3.txt')
+                  .WriteQWord(1)
+                  .WriteDouble(2.0)
+                  .WriteQWord(3)
+                  .WriteDouble(4.0)
+                  .SeekFromBeginning(0)
+                  .LogSize()
+                  .LogPosition()
+                  .GetSize(IA)
+                  .SeekFromBeginning(IA div 2)
+                  .Truncate()
+                  .LogSize()
+                  .LogPosition()
+                  .Close();
   DeleteFile('Example.txt');
   DeleteFile('Example2.txt');
+  DeleteFile('Example3.txt');
 end.
