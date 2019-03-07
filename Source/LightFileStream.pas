@@ -75,7 +75,7 @@ type
     function WriteType<T>(constref Item: T): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     //Writes a single instance of T from @code(Item) to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendType<T>(constref Item: T): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
-    //Write @code(NumInstances) instances of @code(Value) to the underlying file at the current position.
+    //Writes @code(NumInstances) instances of @code(Value) to the underlying file at the current position.
     function FillWith<T>(constref Value: T; const NumInstances: SizeUInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     //Assumes @code(Buffer) is something like the first value of an array of T. Reads @code(ItemCount) items into it from the underlying file at the current @noAutoLink(position).
     function ReadTypedBuffer<T>(var Buffer: T; const ItemCount: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}

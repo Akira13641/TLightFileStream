@@ -155,7 +155,7 @@
 </tr>
 <tr class="list2">
 <td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
-<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#FillWith">FillWith</a></b>&lt;T&gt;(constref Value: T; const NumInstances: SizeUInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>;</code></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#FillWith">FillWith</a></b>&lt;T&gt;(constref Value: T; const NumInstances: SizeUInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
 </tr>
 <tr class="list">
 <td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
@@ -700,11 +700,11 @@ Assumes <code>FileName</code> does not yet exist on disk. Calls <code>FileCreate
 <table class="detail wide_list">
 <tr class="list">
 <td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
-<td class="itemcode"><span id="FillWith"></span><code>function <b>FillWith</b>&lt;T&gt;(constref Value: T; const NumInstances: SizeUInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>;</code></td>
+<td class="itemcode"><span id="FillWith"></span><code>function <b>FillWith</b>&lt;T&gt;(constref Value: T; const NumInstances: SizeUInt): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
 </tr>
 <tr><td colspan="2">
 <p>
-Write <code>NumInstances</code> instances of <code>Value</code> to the underlying file at the current position.</p>
+Writes <code>NumInstances</code> instances of <code>Value</code> to the underlying file at the current position.</p>
 </td></tr>
 </table>
 <table class="detail wide_list">
