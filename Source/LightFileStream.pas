@@ -293,7 +293,7 @@ begin
 end;
 
 function TLightFileStream.LogSize: PLightFileStream;
-var CurrentSize: SizeInt;
+var CurrentSize: SizeInt = 0;
 begin
   GetSize(CurrentSize);
   WriteLn(CurrentSize);
@@ -310,7 +310,7 @@ begin
 end;
 
 function TLightFileStream.LogPosition: PLightFileStream;
-var CurrentPosition: SizeInt;
+var CurrentPosition: SizeInt = 0;
 begin
   GetPosition(CurrentPosition);
   WriteLn(CurrentPosition);
