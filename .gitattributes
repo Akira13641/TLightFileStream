@@ -1,0 +1,3 @@
+* linguist-vendored
+*.pas linguist-vendored=false
+*.lpr linguist-language=Pascal
