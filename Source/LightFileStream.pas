@@ -6,7 +6,7 @@ unit LightFileStream;
 {$mode Delphi}{$H+}{$J-}{$I-}
 
 //Uncomment NoChecks when building production releases of thoroughly tested software.
-{$define NoChecks}
+{.$define NoChecks}
 
 interface
 
