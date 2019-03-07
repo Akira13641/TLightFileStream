@@ -3,7 +3,7 @@
 
 unit LightFileStream;
 
-{$mode Delphi}{$H+}{$J-}{$I-}
+{$mode Delphi}{$H+}{$J-}{$I-}{$R-}
 
 //Uncomment NoChecks when building production releases of thoroughly tested software.
 {.$define NoChecks}
@@ -51,7 +51,7 @@ type
     //Closes the underlying file. Does not return a self-pointer, as it should always be the last method called.
     procedure Close; {$IFNDEF DEBUG}inline;{$ENDIF}
     //Calls @code(FileClose()) on FHandle, then calls @code(FileOpen()) with either @code(fmOpenRead) or @code(fmOpenWrite)
-    //internally based on the provides @code(State) value. FState is then set to @code(State).
+    //internally based on the provided @code(State) value. FState is then set to @code(State).
     function ChangeFileStateTo(const State: TFileState): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     //Sets the current @noAutoLink(position) of the underlying file to @code(ToPosition), relative to 0.
     function SeekFromBeginning(const ToPosition: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
@@ -75,6 +75,8 @@ type
     function WriteType<T>(constref Item: T): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     //Writes a single instance of T from @code(Item) to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendType<T>(constref Item: T): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
+    //Write @code(NumInstances) instances of @code(Value) to the underlying file at the current position.
+    function FillWith<T>(constref Value: T; const NumInstances: SizeInt): PLightFileStream;
     //Assumes @code(Buffer) is something like the first value of an array of T. Reads @code(ItemCount) items into it from the underlying file at the current @noAutoLink(position).
     function ReadTypedBuffer<T>(var Buffer: T; const ItemCount: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     //Assumes @code(Buffer) is something like the first value of an array of T. Writes @code(ItemCount) items from it to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
@@ -149,6 +151,12 @@ type
     function WriteDouble(const Item: Double): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     //Writes a single instance of Double from @code(Item) to the underlying file at the last @noAutoLink(position), behind any existing data.
     function AppendDouble(const Item: Double): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
+    //Reads a single instance of Extended into @code(Item) from the underlying file at the current @noAutoLink(position).
+    function ReadExtended(var Item: Extended): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
+    //Writes a single instance of Extended from @code(Item) to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
+    function WriteExtended(const Item: Extended): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
+    //Writes a single instance of Extended from @code(Item) to the underlying file at the last @noAutoLink(position), behind any existing data.
+    function AppendExtended(const Item: Extended): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     //Reads a single instance of Currency into @code(Item) from the underlying file at the current @noAutoLink(position).
     function ReadCurrency(var Item: Currency): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     //Writes a single instance of Currency from @code(Item) to the underlying file at the current @noAutoLink(position), possibly overwriting existing data.
@@ -353,6 +361,16 @@ begin
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
   FileWrite(FHandle, Item, SizeOf(T));
+  Result := @Self;
+end;
+
+function TLightFileStream.FillWith<T>(constref Value: T; const NumInstances: SizeInt): PLightFileStream;
+var I: SizeUInt;
+begin
+  {$IFNDEF NOCHECKS}
+  if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
+  {$ENDIF}
+  for I := 1 to NumInstances do WriteType<T>(Value);
   Result := @Self;
 end;
 
@@ -689,6 +707,34 @@ begin
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
   FileWrite(FHandle, Item, SizeOf(Double));
+  Result := @Self;
+end;
+
+function TLightFileStream.ReadExtended(var Item: Extended): PLightFileStream;
+begin
+  {$IFNDEF NOCHECKS}
+  if (not FOpen) or (FState <> fsReading) then Exit(@Self);
+  {$ENDIF}
+  FileRead(FHandle, Item, SizeOf(Extended));
+  Result := @Self;
+end;
+
+function TLightFileStream.WriteExtended(const Item: Extended): PLightFileStream;
+begin
+  {$IFNDEF NOCHECKS}
+  if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
+  {$ENDIF}
+  FileWrite(FHandle, Item, SizeOf(Extended));
+  Result := @Self;
+end;
+
+function TLightFileStream.AppendExtended(const Item: Extended): PLightFileStream;
+begin
+  {$IFNDEF NOCHECKS}
+  if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
+  {$ENDIF}
+  FileSeek(FHandle, 0, fsFromEnd);
+  FileWrite(FHandle, Item, SizeOf(Extended));
   Result := @Self;
 end;
 
