@@ -1,6 +1,6 @@
 program LightFileStreamExample;
 
-{$mode Delphi}{$H+}{$J-}{$I-}
+{$mode Delphi}{$H+}{$J-}{$I-}{$R-}
 
 uses SysUtils, LightFileStream;
 
@@ -8,17 +8,19 @@ const
   DAA: array[0..5] of Double = (1.11, 2.22, 3.33, 4.44, 5.55, 6.66);
 
 var
-  DAB: array of Double;
   D: Double;
+  DAB: array of Double;
   SA: Ansistring = 'hello';
   SB: AnsiString = '     ';
   IA: SizeInt;
+  C: Char;
+  CAA: array[0..5] of Char = (#0, #0, #0, #0, #0, #0);
 
 begin
   SetLength(DAB, 28);
   //If using the library in a {$mode ObjFPC} project, you can still use {$modeswitch AutoDeref}
   //to avoid having to manually dereference after each chained function call.
-  TLightFileStream.Create('Example.txt')
+  TLightFileStream.Create('Example1.txt')
                   .WriteTypedBuffer<Double>(DAA[0], 6)
                   .WriteTypedBuffer<Double>(DAA[0], 6)
                   .SeekFromBeginning(0)
@@ -55,7 +57,14 @@ begin
                   .LogSize()
                   .LogPosition()
                   .Close();
-  DeleteFile('Example.txt');
+  TLightFileStream.Create('Example4.txt')
+                  .FillWith<Char>('Z', 6)
+                  .ChangeFileStateTo(fsReading)
+                  .ReadTypedBuffer<Char>(CAA[0], 6)
+                  .Close();
+  for C in CAA do WriteLn(C);
+  DeleteFile('Example1.txt');
   DeleteFile('Example2.txt');
   DeleteFile('Example3.txt');
+  DeleteFile('Example4.txt');
 end.
