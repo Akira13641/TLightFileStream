@@ -6,7 +6,7 @@ unit LightFileStream;
 {$mode Delphi}{$H+}{$J-}{$I-}
 
 //Uncomment NoChecks when building production releases of thoroughly tested software.
-{.$define NoChecks}
+{$define NoChecks}
 
 interface
 
@@ -725,7 +725,7 @@ begin
   {$IFNDEF NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
-  FileRead(FHandle, Item, SizeOf(Currency));
+  FileRead(FHandle, Item, SizeOf(TDateTime));
   Result := @Self;
 end;
 
@@ -734,7 +734,7 @@ begin
   {$IFNDEF NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
-  FileWrite(FHandle, Item, SizeOf(Currency));
+  FileWrite(FHandle, Item, SizeOf(TDateTime));
   Result := @Self;
 end;
 
@@ -744,7 +744,7 @@ begin
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
-  FileWrite(FHandle, Item, SizeOf(Currency));
+  FileWrite(FHandle, Item, SizeOf(TDateTime));
   Result := @Self;
 end;
 
