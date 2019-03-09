@@ -90,10 +90,13 @@ begin
   
   {It's fine to call any of the functions that return a self-pointer without the result connecting to anything.
    In that case, the self-pointer is just discarded. The next line shows an example of this.}
-  LS.WriteUnicodeString('hello').WriteUnicodeString('goodbye');
+  LS.WriteUnicodeString('hello')
+    .WriteUnicodeString('goodbye');
   
   {You can also have a named PLightFileStream variable and assign the self-pointer results to it, as shown on the next line.}
-  PLS := LS.WriteLongInt(1).WriteSingle(2.94).WriteType<TDataRec>(DRA);
+  PLS := LS.WriteLongInt(1)
+           .WriteSingle(2.94)
+           .WriteType<TDataRec>(DRA);
 
   {At this point, accessing either LS or PLS does the same thing, as PLS is just a pointer to LS.
    So on the next line, we'll do something similar to the one above, but both starting from and returning into PLS.}
