@@ -179,6 +179,14 @@
 </tr>
 <tr class="list2">
 <td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#PutPosition">PutPosition</a></b>: SizeInt; inline;</code></td>
+</tr>
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#PutSize">PutSize</a></b>: SizeInt; inline;</code></td>
+</tr>
+<tr class="list2">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
 <td class="itemcode"><code>function <b><a  href="LightFileStream.TLightFileStream.html#ReadAnsiChar">ReadAnsiChar</a></b>(var Item: AnsiChar): <a  href="LightFileStream.html#PLightFileStream">PLightFileStream</a>; inline;</code></td>
 </tr>
 <tr class="list">
@@ -757,6 +765,26 @@ Calls <a class="normal" href="LightFileStream.TLightFileStream.html#GetSize">Get
 Assumes <code>FileName</code> already exists on disk. Calls <code>FileOpen()</code> with either <code>fmOpenRead</code> or <code>fmOpenWrite</code> internally based on the provided <code>InitialState</code> value.
 
 <p><a class="normal" href="LightFileStream.TLightFileStream.html#FState">FState</a> is then set to <code>InitialState</code>, and <a class="normal" href="LightFileStream.TLightFileStream.html#FOpen">FOpen</a> is set to True.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="PutPosition"></span><code>function <b>PutPosition</b>: SizeInt; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Returns the current position of the underlying file.</p>
+</td></tr>
+</table>
+<table class="detail wide_list">
+<tr class="list">
+<td class="visibility"><a  href="legend.html"><img  src="public.gif" alt="Public" title="Public"></a></td>
+<td class="itemcode"><span id="PutSize"></span><code>function <b>PutSize</b>: SizeInt; inline;</code></td>
+</tr>
+<tr><td colspan="2">
+<p>
+Returns the size in bytes of the underlying file.</p>
 </td></tr>
 </table>
 <table class="detail wide_list">
