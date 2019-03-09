@@ -10,7 +10,7 @@ type
     B: Boolean;
     C: AnsiChar;
   end;
-  
+
 const
   DAA: array[0..5] of Double = (1.11, 2.22, 3.33, 4.44, 5.55, 6.66);
   DRA: TDataRec = (S: 1.0; B: True; C: 'A');
@@ -33,10 +33,10 @@ var
 
 begin
   SetLength(DAB, 28);
-  
+
   //If using the library in a {$mode ObjFPC} project, you can still use {$modeswitch AutoDeref}
   //to avoid having to manually dereference after each chained function call.
-  
+
   TLightFileStream.Create('Example1.txt')
                   .WriteTypedBuffer<Double>(DAA[0], 6)
                   .WriteTypedBuffer<Double>(DAA[0], 6)
@@ -52,14 +52,14 @@ begin
                   .ReadPointerBuffer(@DAB[0], SizeOf(Double) * 28)
                   .Close();
   for D in DAB do WriteLn(D : 0 : 2);
-  
+
   TLightFileStream.Create('Example2.txt')
                   .WriteAnsiString(SA)
                   .ChangeFileStateTo(fsReading)
                   .ReadAnsiString(SB, 5)
                   .Close();
   WriteLn(SB);
-  
+
   TLightFileStream.Create('Example3.txt')
                   .WriteQWord(1)
                   .WriteDouble(2.0)
@@ -76,23 +76,23 @@ begin
                   .LogSize()
                   .LogPosition()
                   .Close();
-                  
+
   TLightFileStream.Create('Example4.txt')
                   .FillWith<Char>('Z', 6)
                   .ChangeFileStateTo(fsReading)
                   .ReadTypedBuffer<Char>(CAA[0], 6)
                   .Close();
   for C in CAA do WriteLn(C);
-  
+
   {The library can also of course be used without fully chaining everything.
    The next line makes the LS variable our base non-pointer instance of the TLightFileStream record.}
   LS := TLightFileStream.Create('Example5.txt');
-  
+
   {It's fine to call any of the functions that return a self-pointer without the result connecting to anything.
    In that case, the self-pointer is just discarded. The next line shows an example of this.}
   LS.WriteUnicodeString('hello')
     .WriteUnicodeString('goodbye');
-  
+
   {You can also have a named PLightFileStream variable and assign the self-pointer results to it, as shown on the next line.}
   PLS := LS.WriteLongInt(1)
            .WriteSingle(2.94)
@@ -120,7 +120,7 @@ begin
 
   {And finally we'll close the file through PLS.}
   PLS.Close();
-  
+
   DeleteFile('Example1.txt');
   DeleteFile('Example2.txt');
   DeleteFile('Example3.txt');
