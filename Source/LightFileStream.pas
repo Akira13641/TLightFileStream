@@ -307,7 +307,7 @@ end;
 function TLightFileStream.PutSize: SizeInt;
 begin
   {$IFNDEF NOCHECKS}
-  if not FOpen then Exit(@Self);
+  if not FOpen then Exit(0);
   {$ENDIF}
   GetSize(Result);
 end;
@@ -332,7 +332,7 @@ end;
 function TLightFileStream.PutPosition: SizeInt;
 begin
   {$IFNDEF NOCHECKS}
-  if not FOpen then Exit(@Self);
+  if not FOpen then Exit(0);
   {$ENDIF}
   GetPosition(Result);
 end;
