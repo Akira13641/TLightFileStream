@@ -61,10 +61,14 @@ type
     function SeekFromEnd(const ToPosition: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     {Returns the @noAutoLink(size) in bytes of the underlying file in @code(TheSize), and a self-pointer from the function itself.}
     function GetSize(out TheSize: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
+    {Returns the @noAutoLink(size) in bytes of the underlying file.}
+    function PutSize: SizeInt; {$IFNDEF DEBUG}inline;{$ENDIF}
     {Calls GetSize() internally and writes the value to the command line.}
     function LogSize: PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     {Returns the current @noAutoLink(position) of the underlying file in @code(ThePosition), and a self-pointer from the function itself.}
     function GetPosition(out ThePosition: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
+    {Returns the current @noAutoLink(position) of the underlying file.}
+    function PutPosition: SizeInt; {$IFNDEF DEBUG}inline;{$ENDIF}
     {Calls GetPosition() internally and writes the value to the command line.}
     function LogPosition: PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     {Truncates the underlying file at the current position.}
@@ -300,6 +304,14 @@ begin
   Result := @Self;
 end;
 
+function TLightFileStream.PutSize: SizeInt;
+begin
+  {$IFNDEF NOCHECKS}
+  if not FOpen then Exit(@Self);
+  {$ENDIF}
+  GetSize(Result);
+end;
+
 function TLightFileStream.LogSize: PLightFileStream;
 var CurrentSize: SizeInt = 0;
 begin
@@ -315,6 +327,14 @@ begin
   {$ENDIF}
   ThePosition := FileSeek(FHandle, 0, fsFromCurrent);
   Result := @Self;
+end;
+
+function TLightFileStream.PutPosition: SizeInt;
+begin
+  {$IFNDEF NOCHECKS}
+  if not FOpen then Exit(@Self);
+  {$ENDIF}
+  GetPosition(Result);
 end;
 
 function TLightFileStream.LogPosition: PLightFileStream;
