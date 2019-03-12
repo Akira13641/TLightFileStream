@@ -5,8 +5,8 @@ unit LightFileStream;
 
 {$mode Delphi}{$H+}{$J-}{$I-}{$R-}
 
-{Uncomment NoChecks when building production releases of thoroughly tested software.}
-{.$define NoChecks}
+{Uncomment LIGHTFILESTREAM_NOCHECKS when building production releases of thoroughly tested software.}
+{.$define LIGHTFILESTREAM_NOCHECKS}
 
 interface
 
@@ -26,7 +26,7 @@ type
    (*Determines whether read or write operations are actively accepted.
 
     All functions return immediately without doing anything if the current state is "wrong" relative to them,
-    unless @code({$define NoChecks}) is set, which improves performance but is somewhat less "safe."*)
+    unless @code({$define LIGHTFILESTREAM_NOCHECKS}) is set, which improves performance but is somewhat less "safe."*)
     TFileState = (fsReading, fsWriting);
   strict private
     {The name of the underlying file on disk.}
@@ -36,7 +36,7 @@ type
     (*Indicates whether the file is @noAutoLink(open) and can be accessed at all.
 
     All functions return immediately without doing anything in the event that this is false,
-    unless @code({$define NoChecks}) is set, which improves performance but is somewhat less "safe."*)
+    unless @code({$define LIGHTFILESTREAM_NOCHECKS}) is set, which improves performance but is somewhat less "safe."*)
     FOpen: Boolean;
     {A private instance of TFileState, used as described above.}
     FState: TFileState;
@@ -63,13 +63,13 @@ type
     function GetSize(out TheSize: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     {Returns the @noAutoLink(size) in bytes of the underlying file.}
     function PutSize: SizeInt; {$IFNDEF DEBUG}inline;{$ENDIF}
-    {Calls GetSize() internally and writes the value to the command line.}
+    {Calls GetSize() internally and displays the value with @code(WriteLn()).}
     function LogSize: PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     {Returns the current @noAutoLink(position) of the underlying file in @code(ThePosition), and a self-pointer from the function itself.}
     function GetPosition(out ThePosition: SizeInt): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     {Returns the current @noAutoLink(position) of the underlying file.}
     function PutPosition: SizeInt; {$IFNDEF DEBUG}inline;{$ENDIF}
-    {Calls GetPosition() internally and writes the value to the command line.}
+    {Calls GetPosition() internally and displays the value with @code(WriteLn()).}
     function LogPosition: PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     {Truncates the underlying file at the current position.}
     function Truncate: PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
@@ -244,7 +244,7 @@ end;
 
 procedure TLightFileStream.Close;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if not FOpen then Exit();
   {$ENDIF}
   FileClose(FHandle);
@@ -252,7 +252,7 @@ end;
 
 function TLightFileStream.ChangeFileStateTo(const State: TFileState): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (State = FState) then Exit(@Self);
   {$ENDIF}
   FileClose(FHandle);
@@ -267,7 +267,7 @@ end;
 
 function TLightFileStream.SeekFromBeginning(const ToPosition: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if not FOpen then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, ToPosition, fsFromBeginning);
@@ -276,7 +276,7 @@ end;
 
 function TLightFileStream.SeekFromCurrent(const ToPosition: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if not FOpen then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, ToPosition, fsFromCurrent);
@@ -285,7 +285,7 @@ end;
 
 function TLightFileStream.SeekFromEnd(const ToPosition: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if not FOpen then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, ToPosition, fsFromEnd);
@@ -295,7 +295,7 @@ end;
 function TLightFileStream.GetSize(out TheSize: SizeInt): PLightFileStream;
 var CurrentPosition: SizeInt;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if not FOpen then Exit(@Self);
   {$ENDIF}
   CurrentPosition := FileSeek(FHandle, 0, fsFromCurrent);
@@ -306,7 +306,7 @@ end;
 
 function TLightFileStream.PutSize: SizeInt;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if not FOpen then Exit(0);
   {$ENDIF}
   GetSize(Result);
@@ -322,7 +322,7 @@ end;
 
 function TLightFileStream.GetPosition(out ThePosition: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if not FOpen then Exit(@Self);
   {$ENDIF}
   ThePosition := FileSeek(FHandle, 0, fsFromCurrent);
@@ -331,7 +331,7 @@ end;
 
 function TLightFileStream.PutPosition: SizeInt;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if not FOpen then Exit(0);
   {$ENDIF}
   GetPosition(Result);
@@ -348,7 +348,7 @@ end;
 function TLightFileStream.Truncate: PLightFileStream;
 var CurrentSize: SizeInt;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if not FOpen then Exit(@Self);
   {$ENDIF}
   GetSize(CurrentSize);
@@ -358,7 +358,7 @@ end;
 
 function TLightFileStream.ReadType<T>(var Item: T): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(T));
@@ -367,7 +367,7 @@ end;
 
 function TLightFileStream.WriteType<T>(constref Item: T): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(T));
@@ -376,7 +376,7 @@ end;
 
 function TLightFileStream.AppendType<T>(constref Item: T): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -387,7 +387,7 @@ end;
 function TLightFileStream.FillWith<T>(constref Value: T; const NumInstances: SizeUInt): PLightFileStream;
 var I: SizeUInt;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   for I := 1 to NumInstances do WriteType<T>(Value);
@@ -396,7 +396,7 @@ end;
 
 function TLightFileStream.ReadTypedBuffer<T>(var Buffer: T; const ItemCount: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Buffer, SizeOf(T) * ItemCount);
@@ -405,7 +405,7 @@ end;
 
 function TLightFileStream.WriteTypedBuffer<T>(constref Buffer: T; const ItemCount: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Buffer, SizeOf(T) * ItemCount);
@@ -414,7 +414,7 @@ end;
 
 function TLightFileStream.AppendTypedBuffer<T>(constref Buffer: T; const ItemCount: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -424,7 +424,7 @@ end;
 
 function TLightFileStream.ReadPointerBuffer(const Buffer: Pointer; const NumBytesToRead: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Buffer^, NumBytesToRead);
@@ -433,7 +433,7 @@ end;
 
 function TLightFileStream.WritePointerBuffer(const Buffer: Pointer; const NumBytesToWrite: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Buffer^, NumBytesToWrite);
@@ -442,7 +442,7 @@ end;
 
 function TLightFileStream.AppendPointerBuffer(const Buffer: Pointer; const NumBytesToWrite: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -452,7 +452,7 @@ end;
 
 function TLightFileStream.ReadByte(var Item: Byte): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(Byte));
@@ -461,7 +461,7 @@ end;
 
 function TLightFileStream.WriteByte(const Item: Byte): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(Byte));
@@ -470,7 +470,7 @@ end;
 
 function TLightFileStream.AppendByte(const Item: Byte): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -480,7 +480,7 @@ end;
 
 function TLightFileStream.ReadWord(var Item: Word): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(Word));
@@ -489,7 +489,7 @@ end;
 
 function TLightFileStream.WriteWord(const Item: Word): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(Word));
@@ -498,7 +498,7 @@ end;
 
 function TLightFileStream.AppendWord(const Item: Word): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -508,7 +508,7 @@ end;
 
 function TLightFileStream.ReadLongWord(var Item: LongWord): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(LongWord));
@@ -517,7 +517,7 @@ end;
 
 function TLightFileStream.WriteLongWord(const Item: LongWord): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(LongWord));
@@ -526,7 +526,7 @@ end;
 
 function TLightFileStream.AppendLongWord(const Item: LongWord): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -536,7 +536,7 @@ end;
 
 function TLightFileStream.ReadQWord(var Item: QWord): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(QWord));
@@ -545,7 +545,7 @@ end;
 
 function TLightFileStream.WriteQWord(const Item: QWord): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(QWord));
@@ -554,7 +554,7 @@ end;
 
 function TLightFileStream.AppendQWord(const Item: QWord): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -564,7 +564,7 @@ end;
 
 function TLightFileStream.ReadShortInt(var Item: ShortInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(ShortInt));
@@ -573,7 +573,7 @@ end;
 
 function TLightFileStream.WriteShortInt(const Item: ShortInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(ShortInt));
@@ -582,7 +582,7 @@ end;
 
 function TLightFileStream.AppendShortInt(const Item: ShortInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -592,7 +592,7 @@ end;
 
 function TLightFileStream.ReadSmallInt(var Item: SmallInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(SmallInt));
@@ -601,7 +601,7 @@ end;
 
 function TLightFileStream.WriteSmallInt(const Item: SmallInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(SmallInt));
@@ -610,7 +610,7 @@ end;
 
 function TLightFileStream.AppendSmallInt(const Item: SmallInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -620,7 +620,7 @@ end;
 
 function TLightFileStream.ReadLongInt(var Item: LongInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(LongInt));
@@ -629,7 +629,7 @@ end;
 
 function TLightFileStream.WriteLongInt(const Item: LongInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(LongInt));
@@ -638,7 +638,7 @@ end;
 
 function TLightFileStream.AppendLongInt(const Item: LongInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -648,7 +648,7 @@ end;
 
 function TLightFileStream.ReadInt64(var Item: Int64): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(Int64));
@@ -657,7 +657,7 @@ end;
 
 function TLightFileStream.WriteInt64(const Item: Int64): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(Int64));
@@ -666,7 +666,7 @@ end;
 
 function TLightFileStream.AppendInt64(const Item: Int64): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -676,7 +676,7 @@ end;
 
 function TLightFileStream.ReadSingle(var Item: Single): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(Single));
@@ -685,7 +685,7 @@ end;
 
 function TLightFileStream.WriteSingle(const Item: Single): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(Single));
@@ -694,7 +694,7 @@ end;
 
 function TLightFileStream.AppendSingle(const Item: Single): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -704,7 +704,7 @@ end;
 
 function TLightFileStream.ReadDouble(var Item: Double): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(Double));
@@ -713,7 +713,7 @@ end;
 
 function TLightFileStream.WriteDouble(const Item: Double): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(Double));
@@ -722,7 +722,7 @@ end;
 
 function TLightFileStream.AppendDouble(const Item: Double): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -732,7 +732,7 @@ end;
 
 function TLightFileStream.ReadExtended(var Item: Extended): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(Extended));
@@ -741,7 +741,7 @@ end;
 
 function TLightFileStream.WriteExtended(const Item: Extended): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(Extended));
@@ -750,7 +750,7 @@ end;
 
 function TLightFileStream.AppendExtended(const Item: Extended): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -760,7 +760,7 @@ end;
 
 function TLightFileStream.ReadCurrency(var Item: Currency): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(Currency));
@@ -769,7 +769,7 @@ end;
 
 function TLightFileStream.WriteCurrency(const Item: Currency): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(Currency));
@@ -778,7 +778,7 @@ end;
 
 function TLightFileStream.AppendCurrency(const Item: Currency): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -788,7 +788,7 @@ end;
 
 function TLightFileStream.ReadDateTime(var Item: TDateTime): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(TDateTime));
@@ -797,7 +797,7 @@ end;
 
 function TLightFileStream.WriteDateTime(const Item: TDateTime): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(TDateTime));
@@ -806,7 +806,7 @@ end;
 
 function TLightFileStream.AppendDateTime(const Item: TDateTime): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -816,7 +816,7 @@ end;
 
 function TLightFileStream.ReadAnsiChar(var Item: AnsiChar): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(AnsiChar));
@@ -825,7 +825,7 @@ end;
 
 function TLightFileStream.WriteAnsiChar(const Item: AnsiChar): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(AnsiChar));
@@ -834,7 +834,7 @@ end;
 
 function TLightFileStream.AppendAnsiChar(const Item: AnsiChar): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -844,7 +844,7 @@ end;
 
 function TLightFileStream.ReadWideChar(var Item: WideChar): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(WideChar));
@@ -853,7 +853,7 @@ end;
 
 function TLightFileStream.WriteWideChar(const Item: WideChar): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(WideChar));
@@ -862,7 +862,7 @@ end;
 
 function TLightFileStream.AppendWideChar(const Item: WideChar): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -872,7 +872,7 @@ end;
 
 function TLightFileStream.ReadUnicodeChar(var Item: UnicodeChar): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item, SizeOf(UnicodeChar));
@@ -881,7 +881,7 @@ end;
 
 function TLightFileStream.WriteUnicodeChar(const Item: UnicodeChar): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item, SizeOf(UnicodeChar));
@@ -890,7 +890,7 @@ end;
 
 function TLightFileStream.AppendUnicodeChar(const Item: UnicodeChar): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -900,7 +900,7 @@ end;
 
 function TLightFileStream.ReadShortString(var Item: ShortString; const NumChars: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item[1], NumChars);
@@ -909,7 +909,7 @@ end;
 
 function TLightFileStream.WriteShortString(const Item: ShortString): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item[1], Length(Item));
@@ -918,7 +918,7 @@ end;
 
 function TLightFileStream.AppendShortString(const Item: ShortString): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -928,7 +928,7 @@ end;
 
 function TLightFileStream.ReadAnsiString(var Item: AnsiString; const NumChars: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item[1], NumChars);
@@ -937,7 +937,7 @@ end;
 
 function TLightFileStream.WriteAnsiString(const Item: AnsiString): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item[1], Length(Item));
@@ -946,7 +946,7 @@ end;
 
 function TLightFileStream.AppendAnsiString(const Item: AnsiString): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -956,7 +956,7 @@ end;
 
 function TLightFileStream.ReadWideString(var Item: WideString; const NumChars: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item[1], SizeOf(WideChar) * NumChars);
@@ -965,7 +965,7 @@ end;
 
 function TLightFileStream.WriteWideString(const Item: WideString): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item[1], TEncoding.Unicode.GetByteCount(Item));
@@ -974,7 +974,7 @@ end;
 
 function TLightFileStream.AppendWideString(const Item: WideString): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);
@@ -984,7 +984,7 @@ end;
 
 function TLightFileStream.ReadUnicodeString(var Item: UnicodeString; const NumChars: SizeInt): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsReading) then Exit(@Self);
   {$ENDIF}
   FileRead(FHandle, Item[1], SizeOf(UnicodeChar) * NumChars);
@@ -993,7 +993,7 @@ end;
 
 function TLightFileStream.WriteUnicodeString(const Item: UnicodeString): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileWrite(FHandle, Item[1], TEncoding.Unicode.GetByteCount(Item));
@@ -1002,7 +1002,7 @@ end;
 
 function TLightFileStream.AppendUnicodeString(const Item: UnicodeString): PLightFileStream;
 begin
-  {$IFNDEF NOCHECKS}
+  {$IFNDEF LIGHTFILESTREAM_NOCHECKS}
   if (not FOpen) or (FState <> fsWriting) then Exit(@Self);
   {$ENDIF}
   FileSeek(FHandle, 0, fsFromEnd);

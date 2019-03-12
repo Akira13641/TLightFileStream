@@ -401,7 +401,7 @@
 <p>
 Determines whether read or write operations are actively accepted.
 
-<p>All functions return immediately without doing anything if the current state is &quot;wrong&quot; relative to them, unless <code>{$define NoChecks}</code> is set, which improves performance but is somewhat less &quot;safe.&quot;</p>
+<p>All functions return immediately without doing anything if the current state is &quot;wrong&quot; relative to them, unless <code>{$define LIGHTFILESTREAM_NOCHECKS}</code> is set, which improves performance but is somewhat less &quot;safe.&quot;</p>
 <h6 class="description_section">Values</h6>
 <ul>
 <li>
@@ -441,7 +441,7 @@ The handle of the underlying file on disk.</p>
 <p>
 Indicates whether the file is open and can be accessed at all.
 
-<p>All functions return immediately without doing anything in the event that this is false, unless <code>{$define NoChecks}</code> is set, which improves performance but is somewhat less &quot;safe.&quot;</p>
+<p>All functions return immediately without doing anything in the event that this is false, unless <code>{$define LIGHTFILESTREAM_NOCHECKS}</code> is set, which improves performance but is somewhat less &quot;safe.&quot;</p>
 </td></tr>
 </table>
 <table class="detail wide_list">
@@ -742,7 +742,7 @@ Returns the size in bytes of the underlying file in <code>TheSize</code>, and a 
 </tr>
 <tr><td colspan="2">
 <p>
-Calls <a class="normal" href="LightFileStream.TLightFileStream.html#GetPosition">GetPosition</a>() internally and writes the value to the command line.</p>
+Calls <a class="normal" href="LightFileStream.TLightFileStream.html#GetPosition">GetPosition</a>() internally and displays the value with <code>WriteLn()</code>.</p>
 </td></tr>
 </table>
 <table class="detail wide_list">
@@ -752,7 +752,7 @@ Calls <a class="normal" href="LightFileStream.TLightFileStream.html#GetPosition"
 </tr>
 <tr><td colspan="2">
 <p>
-Calls <a class="normal" href="LightFileStream.TLightFileStream.html#GetSize">GetSize</a>() internally and writes the value to the command line.</p>
+Calls <a class="normal" href="LightFileStream.TLightFileStream.html#GetSize">GetSize</a>() internally and displays the value with <code>WriteLn()</code>.</p>
 </td></tr>
 </table>
 <table class="detail wide_list">
