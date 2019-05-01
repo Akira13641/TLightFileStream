@@ -2,7 +2,7 @@
   "UpdateLazPackages" : [
     {
       "ForceNotify" : true,
-      "InternalVersion" : 1,
+      "InternalVersion" : 2,
       "Name" : "LazLightFileStream.lpk",
       "Version" : "1.1.0.0"
     }
@@ -10,6 +10,6 @@
   "UpdatePackageData" : {
     "DisableInOPM" : false,
     "DownloadZipURL" : "",
-    "Name" : "TLightFileStream"
+    "Name" : "LazLightFileStream"
   }
 }
