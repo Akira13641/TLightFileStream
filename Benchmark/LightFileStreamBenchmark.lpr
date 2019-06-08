@@ -32,7 +32,7 @@ begin
   Timer.Clear();
   Timer.Start();
   with TFileStream.Create('OutputA.bin', fmOpenRead) do begin
-    for I := 0 to 2999999 do QV := ReadQWord;
+    for I := 0 to 2999999 do QV := ReadQWord();
     Free();
   end;
   Timer.Stop();
