@@ -317,7 +317,7 @@ end;
 function TLightFileStream.LogSize: PLightFileStream;
 var CurrentSize: SizeInt = 0;
 begin
-  if not IsConsole() then Exit(@Self);
+  if not IsConsole then Exit(@Self);
   GetSize(CurrentSize);
   WriteLn('Size of TLightFileStream instance with file handle ', FHandle, ': ', CurrentSize);
   Result := @Self;
