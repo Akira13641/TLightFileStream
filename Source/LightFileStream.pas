@@ -215,6 +215,8 @@ type
     function WriteUnicodeString(const Item: UnicodeString): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
     {Writes a single instance of UnicodeString from @code(Item) to the underlying file at the last @noAutoLink(position), behind any existing data.}
     function AppendUnicodeString(const Item: UnicodeString): PLightFileStream; {$IFNDEF DEBUG}inline;{$ENDIF}
+    {Indicates directly whether or not the underlying file is open.}
+    property IsOpen: Boolean read FOpen;
   end;
 
 implementation
@@ -315,8 +317,9 @@ end;
 function TLightFileStream.LogSize: PLightFileStream;
 var CurrentSize: SizeInt = 0;
 begin
+  if not IsConsole() then Exit(@Self);
   GetSize(CurrentSize);
-  WriteLn('Size of TLightFileStream with handle ', FHandle, ': ', CurrentSize);
+  WriteLn('Size of TLightFileStream instance with file handle ', FHandle, ': ', CurrentSize);
   Result := @Self;
 end;
 
@@ -341,7 +344,7 @@ function TLightFileStream.LogPosition: PLightFileStream;
 var CurrentPosition: SizeInt = 0;
 begin
   GetPosition(CurrentPosition);
-  WriteLn('Position of TLightFileStream with handle ', FHandle, ': ', CurrentPosition);
+  WriteLn('Position of TLightFileStream instance with file handle ', FHandle, ': ', CurrentPosition);
   Result := @Self;
 end;
 
