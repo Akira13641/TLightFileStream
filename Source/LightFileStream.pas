@@ -343,6 +343,7 @@ end;
 function TLightFileStream.LogPosition: PLightFileStream;
 var CurrentPosition: SizeInt = 0;
 begin
+  if not IsConsole then Exit(@Self);
   GetPosition(CurrentPosition);
   WriteLn('Position of TLightFileStream instance with file handle ', FHandle, ': ', CurrentPosition);
   Result := @Self;
