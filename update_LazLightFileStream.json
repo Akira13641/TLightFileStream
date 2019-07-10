@@ -1,15 +1,15 @@
 {
-  "UpdateLazPackages" : [
+  "UpdatePackageData" : {
+    "DisableInOPM" : false,
+    "DownloadZipURL" : "https://github.com/Akira13641/TLightFileStream/releases/download/1.2/LazLightFileStream.zip",
+    "Name" : "LazLightFileStream.zip"
+  },
+  "UpdatePackageFiles" : [
     {
       "ForceNotify" : true,
       "InternalVersion" : 4,
       "Name" : "LazLightFileStream.lpk",
       "Version" : "1.2.1.0"
     }
-  ],
-  "UpdatePackageData" : {
-    "DisableInOPM" : false,
-    "DownloadZipURL" : "https://github.com/Akira13641/TLightFileStream/releases/download/1.2/LazLightFileStream.zip",
-    "Name" : "LazLightFileStream.zip"
-  }
+  ]
 }
