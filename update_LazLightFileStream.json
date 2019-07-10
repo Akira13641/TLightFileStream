@@ -10,6 +10,6 @@
   "UpdatePackageData" : {
     "DisableInOPM" : false,
     "DownloadZipURL" : "https://github.com/Akira13641/TLightFileStream/releases/download/1.2/LazLightFileStream.zip",
-    "Name" : "LazLightFileStream"
+    "Name" : "LazLightFileStream.zip"
   }
 }
