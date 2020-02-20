@@ -34,8 +34,8 @@ var
 begin
   SetLength(DAB, 28);
 
-  //If using the library in a {$mode ObjFPC} project, you can still use {$modeswitch AutoDeref}
-  //to avoid having to manually dereference after each chained function call.
+  // If using the library in a {$mode ObjFPC} project, you can still use {$modeswitch AutoDeref}
+  // to avoid having to manually dereference after each chained function call.
 
   TLightFileStream.Create('Example1.txt')
                   .WriteTypedBuffer<Double>(DAA[0], 6)
@@ -84,22 +84,22 @@ begin
                   .Close();
   for C in CAA do WriteLn(C);
 
-  {The library can also of course be used without fully chaining everything.
-   The next line makes the LS variable our base non-pointer instance of the TLightFileStream record.}
+  // The library can also of course be used without fully chaining everything.
+  // The next line makes the LS variable our base non-pointer instance of the TLightFileStream record.
   LS := TLightFileStream.Create('Example5.txt');
 
-  {It's fine to call any of the functions that return a self-pointer without the result connecting to anything.
-   In that case, the self-pointer is just discarded. The next line shows an example of this.}
+  // It's fine to call any of the functions that return a self-pointer without the result connecting to anything.
+  // In that case, the self-pointer is just discarded. The next line shows an example of this.
   LS.WriteUnicodeString('hello')
     .WriteUnicodeString('goodbye');
 
-  {You can also have a named PLightFileStream variable and assign the self-pointer results to it, as shown on the next line.}
+  // You can also have a named PLightFileStream variable and assign the self-pointer results to it, as shown on the next line.
   PLS := LS.WriteLongInt(1)
            .WriteSingle(2.94)
            .WriteType<TDataRec>(DRA);
 
-  {At this point, accessing either LS or PLS does the same thing, as PLS is just a pointer to LS.
-   So on the next line, we'll do something similar to the one above, but both starting from and returning into PLS.}
+  // At this point, accessing either LS or PLS does the same thing, as PLS is just a pointer to LS.
+  // So on the next line, we'll do something similar to the one above, but both starting from and returning into PLS.
   PLS := PLS.ChangeFileStateTo(fsReading)
             .ReadUnicodeString(H, 5)
             .ReadUnicodeString(G, 7)
@@ -107,7 +107,7 @@ begin
             .ReadSingle(FA)
             .ReadType<TDataRec>(DRB);
 
-  {Next we'll display the values...}
+  // Next we'll display the values...
   WriteLn(H);
   WriteLn(G);
   WriteLn(IB);
@@ -118,7 +118,7 @@ begin
     WriteLn(C);
   end;
 
-  {And finally we'll close the file through PLS.}
+  // And finally we'll close the file through PLS.
   PLS.Close();
 
   DeleteFile('Example1.txt');
