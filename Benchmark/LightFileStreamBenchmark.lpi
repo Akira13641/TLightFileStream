@@ -103,7 +103,7 @@
       <LinkSmart Value="True"/>
     </Linking>
     <Other>
-      <CustomOptions Value="-Co- -CO- -Cr- -Cr- -g-"/>
+      <CustomOptions Value="-Ci- -Co- -CO- -Cr- -Cr- -g-"/>
     </Other>
   </CompilerOptions>
   <Debugging>
